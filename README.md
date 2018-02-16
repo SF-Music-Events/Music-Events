@@ -1,2 +1,1 @@
-# Music-Events
-Find local music events
+Find San Francisco music events

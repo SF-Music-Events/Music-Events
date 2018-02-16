@@ -1,0 +1,29 @@
+{
+  "name": "music-events",
+  "version": "1.0.0",
+  "author": "Augustus Brennan, Luke Brennan",
+  "description": "Find local music events",
+  "main": "",
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "format": "prettier --list-different --single-quote --print-width=120 \"js/**/*.{js,jsx}\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint **/*.{js,jsx} --quiet"
+  },
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "webpack": "^3.10.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^4.17.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "nodemon": "^1.14.12",
+    "prettier": "^1.10.2"
+  }
+}

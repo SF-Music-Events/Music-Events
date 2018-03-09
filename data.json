@@ -1,0 +1,69 @@
+{
+  "events": [
+    {
+      "title": "Taco Tuesday",
+      "event-link": "https://www.facebook.com/events/1912331452430604/",
+      "date": "3/20/18",
+      "time": "8pm",
+      "venue": "Monarch",
+      "city": "San Francisco",
+      "tags": ["house", "disco"],
+      "price": "Free",
+      "age": "21+",
+      "organizers": "Dizkoalition",
+      "links": []
+    },
+    {
+      "title": "Jack Wright + Evan Lipson  Skratchklang  Silvia Mattheus",
+      "event-link": "https://www.facebook.com/events/1659309487440480/",
+      "date": "3/20/18",
+      "time": "7:30pm - 10pm",
+      "venue": "Canessa Gallery",
+      "city": "San Francisco",
+      "tags": ["experimental", "ambient"],
+      "price": "$5",
+      "age": "18+",
+      "organizers": "Meridian Gallery",
+      "links": []
+    },
+    {
+      "title": "Rhythm Ritual w/DJ Senta",
+      "event-link": "https://www.facebook.com/events/146121119405972/",
+      "date": "3/20/18",
+      "time": "9pm - 1:30am",
+      "venue": "Rhythm Ritual",
+      "city": "San Francisco",
+      "tags": ["house"],
+      "price": "Free",
+      "age": "21+",
+      "organizers": "Rhythm Ritual",
+      "links": []
+    },
+    {
+      "title": "Tei Shi & Jessy Lanza (DJ Set) w/Gilligan Moss (DJ Set)",
+      "event-link": "http://ticketf.ly/2CJOjK7",
+      "date": "3/21/18",
+      "time": "7pm",
+      "venue": "Bimbo's 365 Club",
+      "city": "San Francisco",
+      "tags": ["synthpop", "club music"],
+      "price": "$22",
+      "age": "18+",
+      "organizers": "Noise Pop Festival",
+      "links": ["https://www.facebook.com/events/261594991038554/"]
+    },
+    {
+      "title": "Knower",
+      "event-link": "http://www.ticketweb.com/fb/7974835/brickmortar",
+      "date": "3/21/18",
+      "time": "9pm",
+      "venue": "Brick And Mortar Music Hall",
+      "city": "San Francisco",
+      "tags": ["synthpop", "funk", "indie dance", "jazz"],
+      "price": "$13.25",
+      "age": "18+",
+      "organizers": "",
+      "links": ["https://www.facebook.com/events/1254978131270962/"]
+    }
+  ]
+}

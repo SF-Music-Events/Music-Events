@@ -1,8 +1,12 @@
 import React from 'react';
-// prettier-ignore
+import preload from '../data.json';
+import NavBar from './NavBar';
+import EventList from './EventList';
+
 const App = () => (
   <div>
-    <h1>Hello</h1>
+    <NavBar />
+    <EventList events={preload.events} />
   </div>
 );
 

@@ -1,13 +1,16 @@
 const cheerio = require('cheerio');
 const request = require('request');
+const fs = require('fs');
 
 const url = 'https://19hz.info/eventlisting_BayArea.php';
+
+let exportData = [];
 
 request(url, (error, response, html) => {
   if (!error) {
     const $ = cheerio.load(html);
 
-    const storage = [];
+    const storage = { events: [] };
 
     $('table:first-of-type > tbody > tr').filter(function() {
       const data = $(this);
@@ -23,10 +26,10 @@ request(url, (error, response, html) => {
         event.push(item.text());
       });
       event.push(linkList);
-      storage.push(event);
+      storage.events.push(event);
     });
 
-    const cleanedData = storage.map(event => {
+    const cleanedData = storage.events.map(event => {
       const cityMarker = event[1].lastIndexOf('(');
       const venueMarker = event[1].lastIndexOf('@');
       const priceMarker = event[3].lastIndexOf('|');
@@ -54,6 +57,12 @@ request(url, (error, response, html) => {
         organizers,
         links
       };
+    });
+
+    // console.log(storage);
+
+    fs.writeFile('scrapedData.json', JSON.stringify(storage, null, 4), function(err) {
+      console.log('File successfully written');
     });
   }
 });

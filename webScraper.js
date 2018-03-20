@@ -61,7 +61,7 @@ request(url, (error, response, html) => {
 
     // console.log(storage);
 
-    fs.writeFile('scrapedData.json', JSON.stringify(storage, null, 4), function(err) {
+    fs.writeFile('scrapedData.json', JSON.stringify(cleanedData, null, 4), function(err) {
       console.log('File successfully written');
     });
   }

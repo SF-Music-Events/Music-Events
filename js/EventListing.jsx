@@ -1,9 +1,14 @@
 /* eslint react/prop-types: 0 */
 import React from 'react';
 
-const EventListing = () => (
+const EventListing = props => (
   <div>
-    <h4>I{"'"}m an event listing yoo</h4>
+    <div>{props.event.title}</div>
+    <div>city: {props.event.city}</div>
+    <div>venue: {props.event.venue}</div>
+    <div>date: {props.event.date}</div>
+    <div>time: {props.event.time}</div>
+    <br />
   </div>
 );
 

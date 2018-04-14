@@ -12,4 +12,20 @@ div > span:hover {
   padding: 10px;
 }
 
+#pageTitle {
+  background-color: lightgrey;
+}
 
+.tag {
+  background-color: lightgrey;
+}
+
+.tag:hover {
+  background-color: blue;
+  color: white;
+}
+
+.filter-Selected {
+  background-color: blue;
+  color: white;
+}

@@ -1,3 +1,5 @@
+/* eslint-plugin-disable */
+
 import React from 'react';
 import EventList from './EventList';
 import Data from '../scrapedData.json';
@@ -9,73 +11,74 @@ class App extends React.Component {
     this.state = {
       events: Data.events,
       displayEvents: Data.events,
-      clickedCity: ' the Bay Area',
-      venueSearched: ''
+      cities: {},
+      venues: { 'Folsom 415': true },
+      displayVenues: { 'Folsom 415': true }
     };
 
     this.filterEvents = this.filterEvents.bind(this);
+    this.getVisibleFilters = this.getVisibleFilters.bind(this);
+    this.filterByCity = this.filterByCity.bind(this);
     this.filterByVenue = this.filterByVenue.bind(this);
-    this.onChange = this.onChange.bind(this);
   }
 
-  filterEvents(e) {
-    let city = e.target.innerHTML;
-    let filteredEvents = this.state.events.filter(event => {
-      return event.city === city;
-    });
-
+  componentDidMount() {
+    let { events } = this.state;
     this.setState({
-      displayEvents: filteredEvents,
-      clickedCity: ' ' + city
+      cities: this.getVisibleFilters(events, 'city'),
+      venues: this.getVisibleFilters(events, 'venue'),
+      displayVenues: this.getVisibleFilters(events, 'venue')
     });
   }
 
-  onChange(e) {
-    this.setState({
-      venueSearched: e.target.value
-    });
-  }
-
-  filterByVenue(e) {
-    e.preventDefault();
-    console.log(this.state.venueSearched);
-  }
-
-  getUniqueTags() {
-    let count = 0;
-    let tags = {};
-
-    this.state.events.forEach(event => {
-      if (!tags[event.venue]) {
-        tags[event.venue] = true;
-        count++;
+  filterEvents(filters, filterType) {
+    let filteredEvents = this.filterByCity(filters.city);
+    if (filterType === 'city') {
+      this.setState({
+        displayEvents: filteredEvents,
+        displayVenues: this.getVisibleFilters(filteredEvents, 'venue')
+      });
+    } else if (filterType === 'venue') {
+      if (!Object.keys(filters.venue).length) {
+        this.setState({
+          displayEvents: filteredEvents
+        });
+      } else {
+        this.setState({
+          displayEvents: this.filterByVenue(filteredEvents, filters.venue)
+        });
       }
+    }
+  }
 
-      // event.tags.split(', ').forEach(tag => {
-      //   if (!tags[tag]) {
-      //     tags[tag] = true;
-      //     count++;
-      //   }
-      // });
+  filterByCity(cities) {
+    if (!Object.keys(cities).length) {
+      return this.state.events;
+    }
+    return this.state.events.filter(event => cities[event.city]);
+  }
+
+  filterByVenue(events, venues) {
+    return events.filter(event => venues[event.venue]);
+  }
+
+  getVisibleFilters(events, type) {
+    let filterObj = {};
+    events.forEach(event => {
+      if (!filterObj[event[type]]) {
+        filterObj[event[type]] = true;
+      }
     });
-    return tags;
+    return filterObj;
   }
 
   render() {
     return (
       <div>
-        <h1>SFFF Music Events</h1>
-        <span onClick={this.filterEvents}>San Francisco</span>
-        <span onClick={this.filterEvents}>Oakland</span>
-        <span onClick={this.filterEvents}>Berkeley</span>
+        <h1 id="pageTitle">SFFF Music Events</h1>
         <br />
         <br />
-        <FilterTable />
-        <form onSubmit={this.filterByVenue}>
-          <span>Search by venue in {this.state.clickedCity} </span>
-          <input type="textbox" placeholder="ex...Monarch" onChange={this.onChange} ref="venueSearch" />
-          <button onClick={this.filterByVenue}>Search</button>
-        </form>
+        <FilterTable cities={this.state.cities} venues={this.state.displayVenues} filterEvents={this.filterEvents} />
         <br />
         <br />
         <EventList events={this.state.displayEvents} />
